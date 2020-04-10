@@ -14,8 +14,11 @@ public class Block : MonoBehaviour
         
     }
 
+    //The collision would the ball.
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Get the name of the gameObject which collided with the block.
+        print(collision.gameObject.name);
         //Destroy the game object to which the script is attached. (in this case, the block)
         Destroy(this.gameObject);
     }

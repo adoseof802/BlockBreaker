@@ -14,7 +14,38 @@ public class GameStatus : MonoBehaviour
     //The text control storing the text score.
     [SerializeField] TextMeshProUGUI scoreText;
 
-    // Start is called before the first frame update
+    //The Awake method runs before Start.
+    private void Awake()
+    {
+        /* As the score resets everytime the scene changes
+         * when we intend the score to update from one scene
+         * to the next, we will use Singleton Patterns. 
+         * We will find all objects of GameStatus
+         * and we will leave only one object running 
+         * which is the first one! */
+
+        //Find the amount of GameStatus objects in the project.
+        int gameStatusCount = FindObjectsOfType<GameStatus>().Length;
+
+        //What happens if there is more than one GameStatus object?
+        if (gameStatusCount > 1)
+        {
+            //Disable and destroy the last game object.
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            //Else if there is only one GameStatus object, keep it.
+            DontDestroyOnLoad(gameObject);
+
+            /* If you run the game and win Level 1, 
+             * you will see that when Level 2 loads, 
+             * the current score in GameStatus is not reset
+             * but instead remains the same as when it was saved in Level 1. */
+        }
+    }
+
     void Start()
     {
         /* Update the scoreText with the current score,

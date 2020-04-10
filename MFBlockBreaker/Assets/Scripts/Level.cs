@@ -11,6 +11,12 @@ public class Level : MonoBehaviour
     //Link SceneLoader to Levels.
     SceneLoader sceneLoader;
 
+    void Start()
+    {
+        //To be able to access the methods in SceneLoader.
+        sceneLoader = FindObjectOfType<SceneLoader>();
+    }
+
     public void CountBreakableBlocks() 
     {
         //For each block found, increment breakableBlock by 1.

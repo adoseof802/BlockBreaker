@@ -7,6 +7,20 @@ public class Block : MonoBehaviour
     //Refers to the sound effect to be attached.
     [SerializeField] AudioClip breakSound;
 
+    //Link Level class to this class.
+    Level level;
+
+    void Start()
+    {
+        //Find object of type Level and save it to level object so we can access the method.
+        level = FindObjectOfType<Level>();
+        //Add 1 to the breakableBlocks variable.
+        level.CountBreakableBlocks();
+
+        /* Once the game is run and you check the SerializeBlock BreakableBlocks, 
+         * you will see the total amount of blocks. */
+    }
+
     //The collision would be the ball.
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,5 +36,8 @@ public class Block : MonoBehaviour
 
         //Destroy the game object to which the script is attached. (in this case, the block)
         Destroy(this.gameObject);
+
+        //Decrement breakableBlocks by 1 until there are no more blocks.
+        level.BlockDestroyCount();
     }
 }

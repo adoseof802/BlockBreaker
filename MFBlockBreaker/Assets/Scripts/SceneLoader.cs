@@ -6,6 +6,14 @@ using UnityEditor;
 
 public class SceneLoader : MonoBehaviour
 {
+    public void LoadNextScene() 
+    {
+        //Get the index of the current scene according to the configuration in Build Settings.
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //Change to the next scene.
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
     public void LoadScene(string sceneName) 
     {
         SceneManager.LoadScene(sceneName);

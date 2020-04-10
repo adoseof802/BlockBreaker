@@ -16,6 +16,10 @@ public class Ball : MonoBehaviour
     //Horizontal and vertical positions to add velocity to give the ball force upwards.
     [SerializeField] float xPosition = 2f;
     [SerializeField] float yPosition = 15f;
+    
+    /* Store multiple sound effects for the ball.
+     * A random one will play upon the ball colliding with another object. */
+    [SerializeField] AudioClip[] ballSounds;
 
     void Start()
     {
@@ -65,6 +69,14 @@ public class Ball : MonoBehaviour
          * and started moving. If yes, retrieve the audio source 
          * component from the Ball game object and play the audio clip. */
         if (hasStarted)
-            GetComponent<AudioSource>().Play();
+        {
+            //Select a random sound effect from the list of available SFX.
+            AudioClip clip = ballSounds[Random.Range(0, ballSounds.Length)];
+
+            /* PlayOneShot can play multiple sounds without cutting each other off.
+             * However, this means that the audio clip cannot be stopped and it will 
+             * just play all the way through with no way to stop it manually/early. */
+            GetComponent<AudioSource>().PlayOneShot(clip);
+        }
     }
 }

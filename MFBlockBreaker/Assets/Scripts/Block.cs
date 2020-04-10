@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     //The collision would the ball.
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -6,16 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LoseCollider : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     /* As we have selected Is Trigger, for the game object
      * to which the script is attached, via the Inspector,
      * the ball will not bounce back as opposed to a normal

@@ -57,4 +57,14 @@ public class Ball : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPosition, yPosition);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        /* Whenever the ball collides with an object, 
+         * check whether or not the paddle has left the paddle
+         * and started moving. If yes, retrieve the audio source 
+         * component from the Ball game object and play the audio clip. */
+        if (hasStarted)
+            GetComponent<AudioSource>().Play();
+    }
 }

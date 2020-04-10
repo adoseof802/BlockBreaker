@@ -11,7 +11,7 @@ public class Paddle : MonoBehaviour
 
     //Values to limit the paddle movement.
     [SerializeField] float minimumX = 1f;
-    [SerializeField] float minimumY = 15f;
+    [SerializeField] float maximumX = 15f;
 
     //This method runs only once when the game launches.
     void Start()
@@ -36,8 +36,13 @@ public class Paddle : MonoBehaviour
         //width of screen in pixels (px)
         float horizontalMousePosition = Input.mousePosition.x / Screen.width * screenWidthInUnits;
 
+        /* Limit the position of the paddle to minimum and maximum width of the screen
+         * to prevent it from moving to left and right indefinitely.
+         * The Mathf.Clamp will limit the horizontal mouse position to the specified values (1 and 15). */
+        float limitHorizontalMousePosition = Mathf.Clamp(horizontalMousePosition, minimumX, maximumX);
+
         //Move the paddle horizontally (of course, by using the x-axis)
-        Vector2 paddlePosition = new Vector2(horizontalMousePosition, transform.position.y); //x and y
+        Vector2 paddlePosition = new Vector2(limitHorizontalMousePosition, transform.position.y); //x and y
 
         /* transform.position.x - current x position
          * transform.position.y - current y position */

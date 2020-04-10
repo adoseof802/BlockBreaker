@@ -15,5 +15,7 @@ public class Paddle : MonoBehaviour
      * this function runs 60 times per second. */
     void Update()
     {
+        //Determine the position of the mouse to track movement.
+        print(Input.mousePosition);
     }
 }

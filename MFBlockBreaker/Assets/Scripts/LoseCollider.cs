@@ -15,4 +15,14 @@ public class LoseCollider : MonoBehaviour
     {
         
     }
+
+    /* As we have selected Is Trigger, for the game object
+     * to which the script is attached, via the Inspector,
+     * the ball will not bounce back as opposed to a normal
+     * collision sans trigger. */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //If the ball collides with the bottom wall, print GAME OVER.
+        print("Game over!");
+    }
 }

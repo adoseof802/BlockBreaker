@@ -25,11 +25,6 @@ public class GameStatus : MonoBehaviour
         scoreText.text = $"Score: {currentScore}";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void AddToScore() 
     {
         //Add the score by 10 points.

@@ -8,19 +8,8 @@ public class Level : MonoBehaviour
     //To keep track of the amount of blocks.
     [SerializeField] int breakableBlock;
 
+    //Link SceneLoader to Levels.
     SceneLoader sceneLoader;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        sceneLoader = FindObjectOfType<SceneLoader>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CountBreakableBlocks() 
     {
@@ -32,8 +21,6 @@ public class Level : MonoBehaviour
     {
         //If a block is destroyed, decrement breakableBlock by 1.
         breakableBlock--;
-
-        //Link SceneLoader to Levels.
 
         //Go to the next Level if there are no more blocks to destroy.
         if (breakableBlock <= 0)

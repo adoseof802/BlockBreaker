@@ -27,6 +27,9 @@ public class Block : MonoBehaviour
         //Get the name of the gameObject which collided with the block.
         print(collision.gameObject.name);
 
+        //Access the GameStatus class to add the score.
+        FindObjectOfType<GameStatus>().AddToScore();
+
         /* We will play a sound when the brick gets destroyed.
          * However we don't want the AudioSource attached to the game object 
          * to be destroyed as well. We will therefore play the sound even

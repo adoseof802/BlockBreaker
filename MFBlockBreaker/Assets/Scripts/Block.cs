@@ -13,12 +13,25 @@ public class Block : MonoBehaviour
     //Attach the sparkles effect.
     [SerializeField] GameObject blockSparklesVFX;
 
+    /* Handling block damage levels.
+     * We will create different block destruction levels for blocks. */
+
+    //Stores maximum number of hits a block can take.
+    [SerializeField] int maxHits;
+    //Updates every time a block is hit.
+    [SerializeField] int timesHit;
+
     void Start()
     {
         //Find object of type Level and save it to level object so we can access the method.
         level = FindObjectOfType<Level>();
-        //Add 1 to the breakableBlocks variable.
-        level.CountBreakableBlocks();
+
+        //Count only the breakable blocks.
+        if (tag == "Breakable")
+        {
+            //Add 1 to the breakableBlocks variable.
+            level.CountBreakableBlocks();
+        }
 
         /* Once the game is run and you check the SerializeBlock BreakableBlocks, 
          * you will see the total amount of blocks. */
@@ -40,17 +53,26 @@ public class Block : MonoBehaviour
          * The sound will play at the Camera's position. */
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
 
+
+
         //We will only destroy blocks with the Breakable tag.
         if (tag == "Breakable")
         {
-            //Call the method for the effects.
-            TriggerSparklesVFX();
+            //Update the collision to check if timesHit is equal to maxHits.
+            timesHit++;
 
-            //Destroy the game object to which the script is attached. (in this case, the block)
-            Destroy(this.gameObject);
+            //If yes, destroy the block.
+            if (timesHit >= maxHits)
+            {
+                //Call the method for the effects.
+                TriggerSparklesVFX();
 
-            //Decrement breakableBlocks by 1 until there are no more blocks.
-            level.BlockDestroyCount();
+                //Destroy the game object to which the script is attached. (in this case, the block)
+                Destroy(this.gameObject);
+
+                //Decrement breakableBlocks by 1 until there are no more blocks.
+                level.BlockDestroyCount();
+            }
         }
     }
 

@@ -21,6 +21,10 @@ public class Block : MonoBehaviour
     //Updates every time a block is hit.
     [SerializeField] int timesHit;
 
+    /* Damage affordance to block (different sprites for hits).
+     * Adding other sprites so they change when a block has different hits. */
+    [SerializeField] Sprite[] hitSprites;
+
     void Start()
     {
         //Find object of type Level and save it to level object so we can access the method.
@@ -73,6 +77,12 @@ public class Block : MonoBehaviour
                 //Decrement breakableBlocks by 1 until there are no more blocks.
                 level.BlockDestroyCount();
             }
+            else 
+            {
+                /* Else if the times hit has not yet exceeded the maximum number of hits, 
+                 * change to the next hit sprite. */
+                ShowNextHitSprite();
+            }
         }
     }
 
@@ -86,5 +96,13 @@ public class Block : MonoBehaviour
 
         //The second parameter is the amount of time to delay before destroying the object.
         Destroy(sparkles, 1f);
+    }
+
+    private void ShowNextHitSprite() 
+    {
+        //Because the array starts from 0.
+        int spriteIndex = timesHit - 1;
+        //Indicate which sprite we want to load in the Sprite Renderer by using the spriteIndex.
+        GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
     }
 }

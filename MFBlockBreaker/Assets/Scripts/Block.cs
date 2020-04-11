@@ -40,14 +40,18 @@ public class Block : MonoBehaviour
          * The sound will play at the Camera's position. */
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
 
-        //Call the method for the effects.
-        TriggerSparklesVFX();
+        //We will only destroy blocks with the Breakable tag.
+        if (tag == "Breakable")
+        {
+            //Call the method for the effects.
+            TriggerSparklesVFX();
 
-        //Destroy the game object to which the script is attached. (in this case, the block)
-        Destroy(this.gameObject);
+            //Destroy the game object to which the script is attached. (in this case, the block)
+            Destroy(this.gameObject);
 
-        //Decrement breakableBlocks by 1 until there are no more blocks.
-        level.BlockDestroyCount();
+            //Decrement breakableBlocks by 1 until there are no more blocks.
+            level.BlockDestroyCount();
+        }
     }
 
     private void TriggerSparklesVFX() 

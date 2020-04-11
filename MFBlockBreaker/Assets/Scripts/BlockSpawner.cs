@@ -28,7 +28,7 @@ public class BlockSpawner : MonoBehaviour
      * set the position of the blockPosition to the position of the 1st block (top left). */
     private void LoadBlocksFromResources() 
     {
-        //Load all files in Resources/Blocks inside the array.
+        //Load all files in Resources/Blocks folder inside the array.
         blocks = Resources.LoadAll<GameObject>("Blocks");
         //Set the block's position to the position of the first block.
         blockPosition = transform.position;
@@ -51,6 +51,7 @@ public class BlockSpawner : MonoBehaviour
      * so that we end up with a list of blocks. */
     private void PrintBlocksOnXAndY() 
     {
+        //5 columns, 7 rows - think like that.
         for (int y = 5; y > 1; y--) 
         {
             //Print block from left to right.

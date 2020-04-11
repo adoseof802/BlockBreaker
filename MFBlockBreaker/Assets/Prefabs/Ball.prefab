@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347f295ff65333e48b5760432dee72f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paddle: {fileID: 0}
+  paddle: {fileID: 6644955903565984952, guid: 1ea77611e16052e4cbc1da3d9b83d25e, type: 3}
   xPosition: 2
   yPosition: 15
   ballSounds:

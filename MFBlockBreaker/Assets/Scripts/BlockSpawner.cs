@@ -10,18 +10,11 @@ public class BlockSpawner : MonoBehaviour
     //Two Vector2 variables for the blocks' destination and starting position.
     Vector2 blockPosition, startingBlockPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         startingBlockPosition = transform.position;
         LoadBlocksFromResources();
         PrintBlocksOnXAndY();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /* Load all files in Resources/Blocks in the array blocks, 

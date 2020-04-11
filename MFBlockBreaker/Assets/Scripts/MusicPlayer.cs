@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
+    AudioSource backgroundMusic;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.Play();
+        backgroundMusic.loop = true;
+        //Music must keep playing throughout the other scenes too.
+        DontDestroyOnLoad(gameObject);
     }
 }
